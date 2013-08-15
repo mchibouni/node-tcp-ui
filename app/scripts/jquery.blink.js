@@ -9,7 +9,6 @@
 */
 
 
-fadeTimeout = 0 ; 
 
 (function( $ ) {
   $.fn.blink = function( options ) {
@@ -53,6 +52,6 @@ fadeTimeout = 0 ;
       }
     })();
 
-    return this; // Returning 'this' to maintain chainability.
+    return fadeTimeout; // Fuck jQ chaining, I need my handler.
   };
 })(jQuery);

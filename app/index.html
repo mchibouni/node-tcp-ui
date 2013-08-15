@@ -31,11 +31,11 @@
 
         if (typeof(localStorage.getItem(unhexButtonID) === undefined || localStorage.getItem(unhexButtonID) === 0 )){
             $('#btn_'+(unhexButtonID.toString())).blink();
-            console.log("$('#btn_'+(unhexButtonID.toString()))");
-            localStorage.setItem(unhexButtonID,1);    
+            console.log(unhexButtonID.toString());
         }
         else {
             localStorage.setItem(unhexButtonID,0);
+            clearTimeout(clTimeout[unhexButtonID-1]);
         }
 
     });
