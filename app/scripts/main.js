@@ -2,7 +2,8 @@ require.config({
     paths: {
         jquery: '../bower_components/jquery/jquery',
         bootstrap: 'vendor/bootstrap',
-        blink: 'jquery.blink'
+        blink: 'jquery.blink',
+	uihandler: 'uihandler'
     },
     shim: {
         bootstrap: {
@@ -12,11 +13,15 @@ require.config({
         blink: {
             deps: ['jquery'],
             exports: 'jquery'
-        }
+        },
+	uihandler: {
+	   deps: ['jquery','blink'],
+	   exports: 'jquery'
+	}
     }
 });
 
-require(['app', 'jquery', 'bootstrap','blink'], function (app, $) {
+require(['app', 'jquery', 'bootstrap','blink','uihandler'], function (app, $) {
     'use strict';
     // use app here
     console.log(app);

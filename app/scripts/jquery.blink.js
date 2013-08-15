@@ -8,6 +8,9 @@
  *      $('selector').blink({maxBlinks: 60, blinkPeriod: 1000, speed: 'slow', onMaxBlinks: function(){}, onBlink: function(){}}); 
 */
 
+
+fadeTimeout = 0 ; 
+
 (function( $ ) {
   $.fn.blink = function( options ) {
 
@@ -46,7 +49,7 @@
       on = !on;
 
       if(!maxBlinksReached) {
-        setTimeout(toggleFade, settings.blinkPeriod/2); // #3
+        fadeTimeout = setTimeout(toggleFade, settings.blinkPeriod/2); // #3
       }
     })();
 

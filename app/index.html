@@ -22,49 +22,55 @@
 
     <script type="text/javascript">
 
-        socket = io.connect("http://localhost:8888");
+    socket = io.connect("http://localhost:8888");
 
-        socket.on("data",function(data){
-            console.log(data[0]-48);
+    socket.on("data",function(data){
+
+        unhexButtonID = data[0]-48 ; 
+        console.log(unhexButtonID);
+
+        if (typeof(localStorage.getItem(unhexButtonID) === undefined || localStorage.getItem(unhexButtonID) === 0 )){
+            $('#btn_'+(unhexButtonID.toString())).blink();
+            console.log("$('#btn_'+(unhexButtonID.toString()))");
+            localStorage.setItem(unhexButtonID,1);    
+        }
+        else {
+            localStorage.setItem(unhexButtonID,0);
+        }
+
+    });
+
+            </script>
 
 
-            $('#btn_'+(data[0]-48)).blink();
+        </head>
+        <body>
 
-        });
-
-
-
-    </script>
-
-
-</head>
-<body>
-
-  <div class="hero-unit">
-    <h1>Télécommande au chevet du patient</h1>
-    <br>
-    <ul class="nav nav-tabs">
-       <li class="active">
-        <a href="#">Toutes priorités</a>
-    </li>
-    <li><a href="#">Basse Priorité</a></li>
-    <li><a href="#">Hauté Priorité</a></li>
-</ul>
-<h2>Patient #1</h2>
-<button id="btn_1" class="btn btn-danger">Malaise</button></ul>
-<button id="btn_2" class="btn btn-warning">Faire ses Besoins</button>
-<button id="btn_3" class="btn btn-success">Manger</button>
-<button id="btn_4" class="btn btn-success">Boire</button>
-<button id="btn_5" class="btn btn-primary">Veut parler à l'Infirmièr(e)/Médecin</button></ul>
-<button id="btn_6" class="btn btn-info">Téléphone/Télévision</button>
-<h2>Patient #2</h2>
-<button class="btn btn-danger">Malaise</button></ul>
-<button class="btn btn-warning">Faire ses Besoins</button>
-<button class="btn btn-success">Manger</button>
-<button class="btn btn-success">Boire</button>
-<button class="btn btn-primary">Veut parler à l'Infirmièr(e)/Médecin</button>
-<button class="btn btn-info">Téléphone/Télévision</button>
-</div>
+          <div class="hero-unit">
+            <h1>Télécommande au chevet du patient</h1>
+            <br>
+            <ul class="nav nav-tabs">
+             <li class="active">
+                <a href="#">Toutes priorités</a>
+            </li>
+            <li><a href="#">Basse Priorité</a></li>
+            <li><a href="#">Hauté Priorité</a></li>
+        </ul>
+        <h2>Patient #1</h2>
+        <button id="btn_1" class="btn btn-danger">Malaise</button></ul>
+        <button id="btn_2" class="btn btn-warning">Faire ses Besoins</button>
+        <button id="btn_3" class="btn btn-success">Manger</button>
+        <button id="btn_4" class="btn btn-success">Boire</button>
+        <button id="btn_5" class="btn btn-primary">Veut parler à l'Infirmièr(e)/Médecin</button></ul>
+        <button id="btn_6" class="btn btn-info">Téléphone/Télévision</button>
+        <h2>Patient #2</h2>
+        <button class="btn btn-danger">Malaise</button></ul>
+        <button class="btn btn-warning">Faire ses Besoins</button>
+        <button class="btn btn-success">Manger</button>
+        <button class="btn btn-success">Boire</button>
+        <button class="btn btn-primary">Veut parler à l'Infirmièr(e)/Médecin</button>
+        <button class="btn btn-info">Téléphone/Télévision</button>
+    </div>
 
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
